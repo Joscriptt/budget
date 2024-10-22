@@ -33,12 +33,6 @@ async function addTransation(formData: FormData): Promise<TransactionResult> {
   if (!userId) {
     return { error: "User not found" };
   }
-  // console.log(userId);
-
-  // const transactionData: TransactionData = {
-  //   text,
-  //   amount,
-  // };
 
   try {
     const transactionData: TransactionData = await db.transactions.create({
@@ -48,6 +42,7 @@ async function addTransation(formData: FormData): Promise<TransactionResult> {
         userId,
       },
     });
+
     revalidatePath("/");
     return { data: transactionData };
   } catch (error) {

@@ -6,7 +6,7 @@ import ThemeToggle from "@/components/themeToggle";
 import { checkUser } from "@/lib/checkUser";
 
 async function Header() {
-  const user = await checkUser();
+  // const user = await checkUser();
   return (
     <nav className="flex justify-between items-center border border-neutral-800 p-2 rounded-xl">
       <div>

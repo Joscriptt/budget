@@ -4,7 +4,7 @@ import getIncomeExpense from "../actions/getIncomeExpenses";
 import { addCommas } from "@/lib/format";
 
 async function IncomeExpense() {
-  const { income, expense, error } = await getIncomeExpense();
+  const { income, expense } = await getIncomeExpense();
 
   return (
     <div>
