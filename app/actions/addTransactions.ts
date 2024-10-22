@@ -1,0 +1,58 @@
+"use server";
+
+import { auth } from "@clerk/nextjs/server";
+import { db } from "@/lib/db";
+import { revalidatePath } from "next/cache";
+
+interface TransactionData {
+  text: string;
+  amount: number;
+}
+
+interface TransactionResult {
+  data?: TransactionData;
+  error: string;
+}
+
+async function addTransation(formData: FormData): Promise<TransactionResult> {
+  const textValue = formData.get("text");
+  const amountValue = formData.get("amount");
+
+  // console.log(textValue, amountValue);
+
+  if (!textValue || textValue === "" || !amountValue) {
+    return { error: "Text or amount is missing" };
+  }
+
+  const text: string = textValue.toString();
+
+  const amount: number = parseFloat(amountValue.toString());
+
+  const { userId } = auth();
+
+  if (!userId) {
+    return { error: "User not found" };
+  }
+  // console.log(userId);
+
+  // const transactionData: TransactionData = {
+  //   text,
+  //   amount,
+  // };
+
+  try {
+    const transactionData: TransactionData = await db.transactions.create({
+      data: {
+        text,
+        amount,
+        userId,
+      },
+    });
+    revalidatePath("/");
+    return { data: transactionData };
+  } catch (error) {
+    return { error: "Transaction not added" };
+  }
+}
+
+export default addTransation;
