@@ -38,8 +38,8 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-          className={`${inter.className} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          // className={`${inter.className} antialiased`}
         >
           <ThemeProvider
             enableSystem
