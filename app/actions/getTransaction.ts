@@ -1,13 +1,11 @@
 "use server";
-
-import { Transaction } from "@/types/Transaction";
-
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
+import { Transaction } from "@/types/Transaction";
 
-async function getTransaction(): Promise<{
-  transaction?: Transaction[];
-  error: string;
+async function getTransactions(): Promise<{
+  transactions?: Transaction[];
+  error?: string;
 }> {
   const { userId } = auth();
 
@@ -16,17 +14,18 @@ async function getTransaction(): Promise<{
   }
 
   try {
-    const transaction = await db.transactions.findMany({
+    const transactions = await db.transactions.findMany({
       where: { userId },
       orderBy: {
         createdAt: "desc",
       },
     });
 
-    return { transaction };
+    return { transactions };
   } catch (error) {
-    return { error: "Database Error" };
+    console.log(error);
+    return { error: "Database error" };
   }
 }
 
-export default getTransaction;
+export default getTransactions;

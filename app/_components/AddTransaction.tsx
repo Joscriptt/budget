@@ -12,6 +12,7 @@ function AddTransaction() {
     // console.log(formData.get("text"), formData.get("amount"));
     const { data, error } = await addTransation(formData);
 
+    console.log(data);
     if (error) {
       // alert(error);
       // toast(error);
@@ -19,8 +20,6 @@ function AddTransaction() {
     } else {
       toast("Transaction Added");
       formRef.current?.reset();
-
-      console.log(data);
     }
   };
   return (

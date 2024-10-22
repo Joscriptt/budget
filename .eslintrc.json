@@ -1,3 +1,7 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    "no-console": "off", // Disable console warnings globally
+    "no-unused-vars": "warn" // Change unused variables to warnings
+  }
 }

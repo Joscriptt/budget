@@ -1,7 +1,5 @@
 "use server";
-
 import { db } from "@/lib/db";
-
 import { auth } from "@clerk/nextjs/server";
 
 async function getUserBalance(): Promise<{
@@ -16,9 +14,7 @@ async function getUserBalance(): Promise<{
 
   try {
     const transactions = await db.transactions.findMany({
-      where: {
-        userId,
-      },
+      where: { userId },
     });
 
     const balance = transactions.reduce(
@@ -28,6 +24,7 @@ async function getUserBalance(): Promise<{
 
     return { balance };
   } catch (error) {
+    console.log(error);
     return { error: "Database error" };
   }
 }

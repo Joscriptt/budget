@@ -4,7 +4,7 @@ import getTransaction from "../actions/getTransaction";
 import TransactionItem from "./TransactionItem";
 
 async function TransactionList() {
-  const { transaction, error } = await getTransaction();
+  const { transactions, error } = await getTransaction();
 
   if (error) {
     return <p>{error}</p>;
@@ -14,8 +14,8 @@ async function TransactionList() {
       <h3>History</h3>
       <ul>
         <li>
-          {transaction &&
-            transaction.map((transact: Transaction) => (
+          {transactions &&
+            transactions.map((transact: Transaction) => (
               <TransactionItem transaction={transact} key={transact.id} />
             ))}
         </li>
