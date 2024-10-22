@@ -15,7 +15,7 @@ function AddTransaction() {
     if (error) {
       // alert(error);
       // toast(error);
-      toast.error(error);
+      toast(error);
     } else {
       toast("Transaction Added");
       formRef.current?.reset();

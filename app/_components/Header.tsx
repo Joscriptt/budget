@@ -3,7 +3,7 @@ import React from "react";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import ThemeToggle from "@/components/themeToggle";
 
-import { checkUser } from "@/lib/checkUser";
+// import { checkUser } from "@/lib/checkUser";
 
 async function Header() {
   // const user = await checkUser();
