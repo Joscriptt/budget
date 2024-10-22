@@ -14,7 +14,8 @@ interface TransactionResult {
   error: string;
 }
 
-async function addTransation(formData: FormData): Promise<TransactionResult> {
+// async function addTransation(formData: FormData): Promise<TransactionResult> {
+async function addTransation(formData: FormData) {
   const textValue = formData.get("text");
   const amountValue = formData.get("amount");
 

@@ -27,12 +27,14 @@ function TransactionItem({ transaction }: { transaction: Transaction }) {
   }
   return (
     <div
-      className={transaction.amount < 0 ? "text-red-600" : "text-emerald-500"}
+      className={
+        Number(transaction.amount) < 0 ? "text-red-600" : "text-emerald-500"
+      }
     >
       {transaction.text}
       <span>
-        {transaction.amount > 0 ? "+" : "-"}$
-        {addCommas(Math.abs(transaction.amount))}
+        {Number(transaction.amount) > 0 ? "+" : "-"}$
+        {addCommas(Math.abs(Number(transaction.amount)))}
       </span>
       <button onClick={() => handleDelete(transaction.id)} className="">
         X

@@ -15,7 +15,7 @@ async function IncomeExpense() {
         </div>
         <div>
           <h4>Expenses</h4>
-          <p>${addCommas(Number(expense.toFixed(2)))}</p>
+          <p>${addCommas(Number(expense?.toFixed(2)))}</p>
         </div>
       </div>
     </div>

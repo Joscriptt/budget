@@ -4,11 +4,12 @@ import { db } from "@/lib/db";
 
 import { auth } from "@clerk/nextjs/server";
 
-async function getIncomeExpense(): Promise<{
-  income?: number;
-  expense: number;
-  error?: string;
-}> {
+async function getIncomeExpense() {
+  // : Promise<{
+  //   income?: number;
+  //   expense: number;
+  //   error?: string;
+  // }>
   const { userId } = auth();
 
   if (!userId) {
