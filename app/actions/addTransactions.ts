@@ -4,15 +4,15 @@ import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 
-interface TransactionData {
-  text: string;
-  amount: number;
-}
+// interface TransactionData {
+//   text: string;
+//   amount: number;
+// }
 
-interface TransactionResult {
-  data?: TransactionData;
-  error: string;
-}
+// interface TransactionResult {
+//   data?: TransactionData;
+//   error: string;
+// }
 
 // async function addTransation(formData: FormData): Promise<TransactionResult> {
 async function addTransation(formData: FormData) {
@@ -36,7 +36,7 @@ async function addTransation(formData: FormData) {
   }
 
   try {
-    const transactionData: TransactionData = await db.transactions.create({
+    const transactionData = await db.transactions.create({
       data: {
         text,
         amount,
