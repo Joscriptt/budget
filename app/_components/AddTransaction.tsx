@@ -4,6 +4,8 @@ import React from "react";
 import { toast } from "sonner";
 import addTransation from "../actions/addTransactions";
 import { useRef } from "react";
+import { Input } from "./Input";
+import { Button } from "./Button";
 
 function AddTransaction() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -14,8 +16,6 @@ function AddTransaction() {
 
     console.log(data);
     if (error) {
-      // alert(error);
-      // toast(error);
       toast(error);
     } else {
       toast("Transaction Added");
@@ -27,28 +27,41 @@ function AddTransaction() {
       <h3>Add Transaction</h3>
 
       <form ref={formRef} action={clientAction}>
-        <div>
-          <label htmlFor="text">Text</label>
-          <input
+        <div className="my-5">
+          <label className="text-xl" htmlFor="text">
+            Expense Name
+          </label>
+
+          <Input
             type="text"
-            name="text"
+            name="name"
             id="text"
-            placeholder="Enter your text"
+            placeholder="Enter Item Name"
+            className="mt-3"
           />
         </div>
         <div>
-          <label htmlFor="text">
-            Amount <br /> (negative - Expense, Positive - income
+          <label className="text-xl" htmlFor="text">
+            Amount
           </label>
-          <input
+          <span className="text-[11px] text-neutral-600">
+            {" "}
+            negative means <span className="text-red-600">Expenses</span> ,
+            Positive means <span className="text-emerald-500">Income</span>
+          </span>
+
+          <Input
             type="number"
             name="amount"
             id="amount"
             placeholder="Enter amount"
             step={0.01}
+            className="mt-3"
           />
         </div>
-        <button className="bg-neutral-500">Add Transaction</button>
+        <Button className="mt-5 w-full" variant={"default"} size={"lg"}>
+          Add Transaction
+        </Button>
       </form>
     </div>
   );

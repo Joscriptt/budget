@@ -12,6 +12,11 @@ body {
   }
 }
 
+.cl-avatarBox {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
